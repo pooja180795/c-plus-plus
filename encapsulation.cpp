@@ -1,6 +1,6 @@
 /* Encapsualation:
 It's a practice of bundling variables and methods in a single unit(called class),
-using namespace std; */
+while restricting direct access to the internal state from outside. */
 
 #include <iostream>
 using namespace std;

@@ -1,5 +1,8 @@
 /* Encapsualation:
 It's a practice of bundling variables and methods in a single unit(called class),
+using namespace std; */
+
+#include <iostream>
 using namespace std;
 
 class Account{
@@ -13,7 +16,7 @@ public:
         account_no = a;
         name = n;
         if(b < 0){
-            cout << "invalis balance" << endl;
+            cout << "invalid balance" << endl;
             balance = 0;
         }
         else{

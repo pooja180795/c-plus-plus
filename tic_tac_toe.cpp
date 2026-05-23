@@ -4,23 +4,39 @@ using namespace std;
 class TicTacToe{
     public:
         char board[3][3] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
-        char player1 = 'X';
-        char player2 = '0';
-        int count = 0;
+        char player1;
+        char player2;
+        int count, s1, s2;
+        string n1, n2;
+
+        TicTacToe(int score1, int score2)
+        {
+            system("clear");
+            cout << "Enter name of player1: ";
+            cin >> n1;
+            cout << "Enter name of player2: ";
+            cin >> n2;
+
+            player1 = 'X';
+            player2 = '0';
+            count = 0;
+            s1 = score1;
+            s2 = score2;
+        }
 
         void play()
         {
             while(true)
             {
-                if(!(playMove(player1))) { return; };
-                if(checkWin(player1)) { displayBoard(); cout << player1 << " is the winner" << endl; break; }
+                if(!(playMove(player1, n1))) { return; }
+                if(checkWin(player1)) { displayBoard(); s1 = s1 + 100; cout << n1 << " is the winner" << endl; cout << "score= " << s1;  return; }
                 count++;
                 if(count == 9){
                     displayBoard(); 
-                    cout << "It's a tie" << endl; break; 
+                    cout << "It's a tie" << endl; return; 
                 }
-                if(!(playMove(player2))) { return; }
-                if(checkWin(player2)) { displayBoard(); cout << player2 << " is the winner" << endl; break; }
+                if(!(playMove(player2, n2))) { return; }
+                if(checkWin(player2)) { displayBoard(); s2 = s2 + 100; cout << n2 << " is the winner" << endl; cout << "score= " << s2;  return; }
                 count++;
             }
         }
@@ -38,14 +54,14 @@ class TicTacToe{
             }
         }
 
-        bool playMove(char p)
+        bool playMove(char p, string name)
         {
             bool validMove = false;
             while(!validMove)
             {
                 displayBoard();
                 int move;
-                cout << "player- " << p << " please select a box: ";
+                cout << name << " please select a box: ";
                 if(!(cin >> move))
                 {
                     cout << endl << "Exiting...." << endl;
@@ -99,7 +115,16 @@ class TicTacToe{
 
 int main()
 {
-    TicTacToe game;
-    game.play();
+    int p1Score = 0, p2Score = 0;
+    char again = 'y';
+    while(again == 'y')
+    {
+        TicTacToe game(p1Score, p2Score);
+        game.play();
+        if(!cin){ break; }
+        again = 'n';
+        cout << "Play again? (y/n): ";
+        cin >> again;
+    }
     return 0;
 }

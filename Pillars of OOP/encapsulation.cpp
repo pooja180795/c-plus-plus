@@ -27,17 +27,36 @@ public:
     }
 
     void deposit(int amt){
-        balance += amt;
-        cout << "Deposited " << amt <<" successfully" << endl;
+        try{
+            checkAmt(amt);
+            balance += amt;
+            cout << "Deposited " << amt <<" successfully" << endl;
+        }
+        catch(const char* error){
+            cout << "Error: " << error << endl;
+        }
+
     }
 
-    void withdraw(int amt){
-        if(balance >= amt){
-            balance -= amt;
-            cout << "withdrawn "<< amt <<" sucessfully" << endl; 
+    void checkAmt(int amt){
+            if(amt < 0){
+                throw("Withdrawal/Diposit Amount can not be negative!");
+            }
+            if(balance < amt){
+                throw("withdrawal amount exceeds balance!");
+            }
+            
         }
-        else{
-            cout << "withdrawal is bigger than balance" << endl;
+
+    void withdraw(int amt){
+        try{
+            checkAmt(amt);
+            balance -= amt;
+            cout << "withdrawn "<< amt <<" sucessfully" << endl;
+        }
+
+        catch(const char* error){
+            cout << "Error: " << error << endl; 
         }
     }
 
@@ -52,12 +71,14 @@ public:
 };
 
 int main(){
-    Account c1(234, "abhi", -1000);
+    Account c1(234, "abhi", 1000);
     
     c1.displayBalance();
     c1.deposit(500);
     c1.displayBalance();
     c1.withdraw(200);
+    c1.displayBalance();
+    c1.withdraw(300);
     c1.displayBalance();
     
     return 0;

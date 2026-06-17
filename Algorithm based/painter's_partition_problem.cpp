@@ -8,10 +8,10 @@ using namespace std;
 
 class Solution{
 public:
-    bool isValid(vector<int>& arr, int totBoards, int minTime, int totPainters){
+    bool isPossible(vector<int>& arr, int totBoards, int minAllowedTime, int totPainters){
         int reqPainter = 1, currTime = 0;
         for(int i = 0; i < totBoards; i++){
-            if(currTime + arr[i] <= minTime){
+            if(currTime + arr[i] <= minAllowedTime){
                 currTime += arr[i];
             }
             else{
@@ -37,7 +37,7 @@ public:
         int st = max, end = totUnits;
         while(st <= end){
             int mid = st + (end-st)/2;
-            if(isValid(arr, totBoards, mid, totPainters )){
+            if(isPossible(arr, totBoards, mid, totPainters )){
                 ans = mid;
                 end = mid - 1;
             }

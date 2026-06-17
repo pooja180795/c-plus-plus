@@ -8,9 +8,9 @@ using namespace std;
 
 class Solution{
 public:
-    bool isPossible(vector<int>& arr, int totBoards, int minAllowedTime, int totPainters){
+    bool isPossible(vector<int>& arr, int totBoards, int minAllowedTime, int totPainters){           //O(n)
         int reqPainter = 1, currTime = 0;
-        for(int i = 0; i < totBoards; i++){
+        for(int i = 0; i < totBoards; i++){ 
             if(currTime + arr[i] <= minAllowedTime){
                 currTime += arr[i];
             }
@@ -25,19 +25,19 @@ public:
         return true;
     }
 
-    int findMinTime(vector<int>& arr, int totBoards, int totPainters){
+    int findMinTime(vector<int>& arr, int totBoards, int totPainters){      //O(n*log(N))
         int totUnits = 0, max = INT8_MIN;
         int ans = -1;
-        for(int val : arr){
+        for(int val : arr){    //O(n)
             totUnits += val;
             if(val > max){
                 max = val;
             }
         }
         int st = max, end = totUnits;
-        while(st <= end){
+        while(st <= end){                  //O(lon(N))
             int mid = st + (end-st)/2;
-            if(isPossible(arr, totBoards, mid, totPainters )){
+            if(isPossible(arr, totBoards, mid, totPainters )){          // O(n)
                 ans = mid;
                 end = mid - 1;
             }

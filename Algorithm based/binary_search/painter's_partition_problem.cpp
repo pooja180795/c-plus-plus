@@ -1,5 +1,5 @@
 /*
-
+Problem: Assign c cows to n stands such that min distance between them is largest possible
 */
 
 #include <iostream>

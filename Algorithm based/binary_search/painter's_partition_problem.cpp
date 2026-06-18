@@ -1,5 +1,8 @@
 /*
-Problem: Assign c cows to n stands such that min distance between them is largest possible
+-   given are total boards and arr[i] represents total units in ith board. and there are total painters given. 
+    each painter takes 1 unit of time to paint 1 unit of a board.
+-   The task is to find the minimum time to paint all the boards under the constraint that any painter can paint
+    continuous sections of boards.
 */
 
 #include <iostream>

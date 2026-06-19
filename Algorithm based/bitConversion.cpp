@@ -35,7 +35,7 @@ public:
 int main()
 {
     Convert c;
-    int n = 25;
+    int n = 50;
     int bin = c.decToBin(n);
     cout << "binary of " << n << " is = " << bin << endl;
 

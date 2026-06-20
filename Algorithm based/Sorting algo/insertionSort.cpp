@@ -2,26 +2,23 @@
 #include <vector>
 using namespace std;
 
-void insertionSort(vector<int>& arr){
+void insertionSort(vector<int>& arr){         //O(n^2)
     int n = arr.size();
-    int total_steps= 0;
-    for(int i = 1; i < n; i++){ total_steps++;
-        int key = arr[i];
-        int j = i-1;
-        
-        while(j >= 0 && arr[j] > key){
-            arr[j+1] = arr[j];
-            j--;
+    for(int i = 1; i < n; i++){
+        int curr = arr[i];
+        int prev = i-1;
+        while(prev >= 0 && arr[prev] > curr){
+            arr[prev+1] = arr[prev];
+            prev--;
         }
-        arr[j+1] = key;
+        arr[prev+1] = curr;
     }
-    cout << "total steps= " << total_steps << endl;
 }
 
 
 
 int main(){
-    vector<int> arr = {9,8,7,6,5,4,3,2,1};
+    vector<int> arr = {9,18,17,6,5,14,3,2,1};
     insertionSort(arr);
     for(int val : arr){
         cout << val << " ";

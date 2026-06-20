@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-void bubbleSort(vector<int>& arr){
+void bubbleSort(vector<int>& arr){           //O(n^2)
     int n = arr.size();
     int total_steps = 0;
     for(int i = 0 ; i < (n-1); i++){
@@ -17,9 +17,10 @@ void bubbleSort(vector<int>& arr){
                 swapped = true;
             }
         }
-        if(!swapped){ break; }
+        cout << "total steps= " << total_steps << endl;
+        if(!swapped){ return; }
     }
-    cout << "total steps= " << total_steps << endl;
+    
 }
 
 int main(){

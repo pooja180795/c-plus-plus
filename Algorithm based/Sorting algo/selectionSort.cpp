@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-void selectionSort(vector<int>& arr){
+void selectionSort(vector<int>& arr){        //O(n^2)
     int n = arr.size();
     int total_steps = 0;
     for(int i = 0; i < n; i++){

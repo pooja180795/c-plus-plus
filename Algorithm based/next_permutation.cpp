@@ -15,11 +15,12 @@ The replacement must be in place and use only constant extra memory.
 */
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class Solution{
 public:
-	void findNextPermutation(vector<int>& arr){
+	void findNextPermutation(vector<int>& arr){      // time-complexity = O(1) ,space-complexity = O(1)
         //find pivote
         int n = arr.size();
         if(n == 1) { return; }
@@ -31,12 +32,7 @@ public:
             }
         }
         if(piv == -1){
-            int start = 0, end = n-1;
-            while(start <= end){
-                swap(arr[start], arr[end]);
-                start++;
-                end--;
-            } 
+            reverse(arr.begin(), arr.end());
             return;
         }
 
@@ -49,6 +45,7 @@ public:
         }
 
         //reverse (pivot+1 to n-1)
+        //reverse(arr.begin() + piv+1, arr.end());
         int st = piv+1;
         int end = n-1;
         while(st <= end){
@@ -67,7 +64,7 @@ public:
 
 int main(){
     Solution s;
-    vector<int> arr = {1,3,2};
+    vector<int> arr = {5,4,7,6,5,4,3,2,1};
     s.findNextPermutation(arr);
     s.printArr(arr);
     return 0;

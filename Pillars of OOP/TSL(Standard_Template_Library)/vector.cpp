@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int main(){
@@ -64,9 +65,21 @@ int main(){
     // }
     vector<int>:: reverse_iterator itr;
     for(auto itr = vec.rbegin(); itr != vec.rend(); itr++){         // ++ instead of -- as per convention
-        cout << *itr << endl;
+        cout << *itr << " ";
     }
+    cout << endl;
+
+    for(int val : vec3){
+        cout << val << " ";
+    }
+    cout << endl;
     
+    sort(vec3.begin(), vec3.end(), greater<int>());  // for reverse order sorting
+
+    for(int val : vec3){
+        cout << val << " ";
+    }
+    cout << endl;
 
     return 0;
 

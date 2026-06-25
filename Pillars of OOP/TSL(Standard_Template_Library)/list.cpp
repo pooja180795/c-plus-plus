@@ -8,7 +8,7 @@ using namespace std;
 
 int main(){
     list<int> myList;
-    list<int> myList2 = {5,6,7,8};
+    list<int> myList2 = {15,6,17,8};
     // myList.push_back(1);    // 1
     // myList.push_back(2);    // 1 2
     // myList.push_front(3);   // 3 1 2
@@ -29,6 +29,8 @@ int main(){
      for(int val : myList2){
         cout << val << " ";
     }
+
+    
 
     cout << endl;
     return 0;

@@ -1,5 +1,5 @@
 /*  deque = double ended queue so Random access is possible like vector or array
-    dequeue works for pop element from last 
+    while dequeue = it works for pop element from last 
     erase, begin, end, rbegin, rend all work same   */
 #include <iostream>
 #include <deque>
@@ -13,6 +13,10 @@ int main(){
     }
     cout << endl;
     cout << d[1] << endl;      // for list this is not possible
+    d.erase(d.begin()+1);
+    for(int val : d){
+        cout << "popped = " << val << " ";
+    }
     return 0;
 }
 

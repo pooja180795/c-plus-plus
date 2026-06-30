@@ -1,29 +1,56 @@
+/*
+Given two strings s1 and s2, return true if s2 contains a of s1, or false otherwise.
+
+In other words, return true if one of s1's permutations is the substring of s2.
+*/
+
 #include <iostream>
-//#include <cstring>
-#include <unordered_map>
 using namespace std;
 
-int main(){
-    string str1 = "ab";
-    string str2 = "nvdnnbajfj";
-    int arr[26] = {0};
-    int arr2[26] = {0};
-    
-    for(int i = 0; i < str1.length(); i++){
-        arr[str1[i] - 'a']++;
+bool isSameFreq(int freq[], int windFreq[], int partSize){
+    for(int i = 0; i < partSize; i++){      //  O(1) = 26
+        if(freq[i] != windFreq[i]){
+            return false;
+        }
+    }
+    return true;
+}
+
+bool checkPermutation(string s1, string s2){    //O(n^2)
+    int n1 = s1.length();
+    int freq[26] = {0};
+    int n2 = s2.length();
+    int partSize = size(freq);
+    for(int i = 0; i < n1; i++){     //O(n1)
+        freq[s1[i] - 'a']++;
     }
 
-    for(int i = 0; i < str2.length(); i++){
-        int winIndex = 0;
+    for(int i = 0; i < n2; i++){    //O(n2)
         int idx = i;
-        int winFreq[26] = {0};
+        int windFreq[26] = {0};
+        int windSize = 0;
 
-        while(winIndex <= str1.length() && )
+        while(windSize < n1 && idx < n2){   //O(n2)
+            windFreq[s2[idx] - 'a']++;
+            idx++;
+            windSize++;
+        }
+        
+        if(isSameFreq(freq, windFreq, partSize)){
+            return true;
+        }
     }
+    return false;
+}
 
-    cout << "no" << endl;
+int main(){
+    string s1 = "kb";
+    string s2 = "eidbaoaoo";
     
-    cout << endl;
-    
+    cout << checkPermutation(s1, s2) << endl; 
+
     return 0;
 }
+
+
+

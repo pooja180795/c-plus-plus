@@ -1,57 +1,57 @@
+/*
+Given an array of characters chars, compress it using the following algorithm:
+
+Begin with an empty string s. For each group of consecutive repeating characters in chars:
+
+    If the group's length is 1, append the character to s.
+    Otherwise, append the character followed by the group's length.
+
+The compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars.
+
+After you are done modifying the input array, return the new length of the array.
+
+You must write an algorithm that uses only constant extra space.
+
+Note: The characters in the array beyond the returned length do not matter and should be ignored.
+*/
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <map>
 using namespace std;
 
-class Solution {
-public:
-    int compress(vector<char>& chars) {
-        map<char, int> freq;
-        int n = chars.size();
-
-        for(int i = 0; i < n; i++){
-            freq[chars[i]]++;
-        }    
-
+int compress(vector<char>& chars){
+    int n = chars.size();
+    int idx = 0;
+    for(int i = 0; i < n; i++){             //O(n)
+        char ch = chars[i];
         int count = 0;
-        for(auto pair : freq){
-            vector<int> vec;
-            if(pair.second == 1){
-                chars[count++] = pair.first;
-            }
-            else if( pair.second > 1 && pair.second < 10){
-                chars[count++] = pair.first;
-                chars[count++] = 'pair.second';
-            }
-            else{
-                while(pair.second > 0){
-                    vec.push_back(pair.second % 2); 
-                    pair.second %= 2;
-                }
-                reverse(vec.begin(), vec.end());
-                for(int val : vec){
-                    chars[count++] = val;
-                }
+        idx = i;
+        while(i < n && chars[i] == ch){
+            count++;
+            i++;
+        }
+        if(count == 1){
+            chars[idx++] = ch;
+        }
+        else{
+            chars[idx++] = ch;
+            string currStr = to_string(count);
+            for(int j = 0; j < currStr.length(); j++){
+                chars[idx++] = currStr[j];
             }
         }
-        //count--;
-        return count;
-        
+        i--;
     }
-};
-
+    chars.resize(idx);
+    return chars.size();
+}
 
 int main(){
-    Solution s;
-    vector<char> chars = {'a','a','b','b','c','c','c','e','d','d'};
-    cout << s.compress(chars) << endl;
-    
-    for(char val : chars){
+    vector<char> chars = {'a','a','b','b','c','c','c'};
+    cout << compress(chars) << endl;
 
-    }
-
-    
-
+    // for(char ch : chars){
+    //     cout << ch << " ";
+    // }
+    // cout << endl;
     return 0;
 }

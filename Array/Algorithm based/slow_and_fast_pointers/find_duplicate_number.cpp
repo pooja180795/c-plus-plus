@@ -9,7 +9,7 @@ You must solve the problem without modifying the array nums and using only const
 #include <vector>
 using namespace std;
 
-int findDuplicate(vector<int>& nums){
+int findDuplicate(vector<int>& nums){               // time-complexity : O(n), space-complexity : O(1)
     int slow = nums[0];
     int fast = nums[0];
 

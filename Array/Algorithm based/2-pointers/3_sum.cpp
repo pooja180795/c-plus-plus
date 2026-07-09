@@ -30,7 +30,7 @@ int main(){                                 // time- O(n^2 + nlog(n)), space - O
                 vec.push_back({nums[i], nums[st], nums[end]});
                 st++;
                 end--;
-                if(st > 0 && nums[st] == nums[st-1]){
+                if(st < end && nums[st] == nums[st-1]){
                     st++;
                 }
             }

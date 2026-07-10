@@ -12,7 +12,7 @@ important: we are using 2 pointers approach because its most optimal
 using namespace std;
 
 int main(){                                 // time- O(n^2 + nlog(n)), space - O(unique triplets)
-    vector<int> nums= {-1,-1,-4,0,1,2};
+    vector<int> nums= {-2,-2,-2,-2,-2,-2,4,-2,-2,-2};
     sort(nums.begin(), nums.end());         // O(nlog(n)
     int n = nums.size();
     vector<vector<int>> vec;
@@ -44,12 +44,11 @@ int main(){                                 // time- O(n^2 + nlog(n)), space - O
         
     }
 
- for(auto v : vec){
+for(auto v : vec){
     for(int val : v){
         cout << val << " ";
     }
     cout << endl;
- }
-    
+}
     return 0;
 }

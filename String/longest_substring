@@ -1,27 +1,26 @@
-// Online C++ compiler to run C++ program online
 #include <iostream>
 #include <climits>
 #include <unordered_map>
 using namespace std;
 
-int main() {
-    string s = "pwwkew";
-    int len = INT_MIN;
+int findMaxLen(string s){
+    int maxLen = INT_MIN;
     int n = s.length();
     unordered_map<char, int> m;
-    int curr = 0;
+    int left = 0;
     
-    for(int i = 0; i< n; i++){
-        if(m.find(s[i])==m.end()){
-            curr++;
-            m[s[i]] = 1;
+    for(int right = 0; right < n; right++){
+        if((m.find(s[right]) != m.end()) && m[s[right]] >= left){
+            left = m[s[right]] + 1;
         }
-        else{
-            len = max(curr, len);
-            curr = 0;
-            m.clear();
-        }
+        m[s[right]] = right;
+        maxLen = max(maxLen, right - left + 1);
     }
-    cout << max(curr,len)<< endl;
+    return maxLen;
+}
+
+int main() {
+    string s = "abcdeajklp";
+    cout << findMaxLen(s) << endl;
     return 0;
 }

@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void printSubsets(vector<int>& arr, vector<int>& ans, int i, vector<vector<int>>& a){       //TC = O(2^n * n)
+    
+    if(i == arr.size()){                // base case
+        a.push_back({ans});
+        
+        return;
+    }
+
+    //include
+    ans.push_back(arr[i]);
+    printSubsets(arr, ans, i+1, a);
+    
+    
+    ans.pop_back();     // backtrack
+    //exclude
+    printSubsets(arr, ans, i+1, a);
+
+}
+
+int main(){
+    vector<int> arr = {1,2,3};
+    vector<int> ans;        // store subsets
+    vector<vector<int>> a;
+    printSubsets(arr, ans, 0, a);
+
+    for(vector<int> vec: a){
+        for(int val : vec){
+            cout << val << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}

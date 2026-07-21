@@ -14,8 +14,8 @@ void printSubsets(vector<int>& arr, vector<int>& ans, int i, vector<vector<int>>
     ans.push_back(arr[i]);
     printSubsets(arr, ans, i+1, a);
     
-    
     ans.pop_back();     // backtrack
+    
     //exclude
     printSubsets(arr, ans, i+1, a);
 

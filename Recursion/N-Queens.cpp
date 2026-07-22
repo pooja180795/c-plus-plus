@@ -1,26 +1,33 @@
+
+/*
+The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+
+Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
+
+Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+*/
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
 class Solution {
 public:
     bool isSafe(vector<string>& board, int row, int col, int n){
-        //row check
-        for(int r = 0; r <= row; r++){
+        // verticle check
+        for(int r = 0; r < row; r++){
             if(board[r][col] == 'Q'){
                 return false;
             }
         }
-        //col check
-        for(int c = 0; c <= col; c++){
-            if(board[row][c] == 'Q'){
-                return false;
-            }
-        }
         //upper left diagonal
-        for(int r = row, c = col; r >= 0, c >= 0; r--, c--){
+        for(int r = row-1, c = col-1; r >= 0 && c >= 0; r--, c--){
             if(board[r][c] == 'Q'){
                 return false;
             }
         }
         //upper right diagonal
-        for(int r = row, c = col; r >= 0, c < n; r--, c++){
+        for(int r = row-1, c = col+1; r >= 0 && c < n; r--, c++){
             if(board[r][c] == 'Q'){
                 return false;
             }
@@ -30,14 +37,14 @@ public:
     void placeInRow(vector<string>& board, int row, int n, vector<vector<string>>& ans){
         if(row == n){
             //base case
-            ans.push_back({row});
+            ans.push_back({board});
             return;
 
         }
         for(int j = 0; j < n; j++){
             if(isSafe(board, row, j, n)){
                 board[row][j] = 'Q';
-                placeRow(board, row+1, n);
+                placeInRow(board, row+1, n, ans);
                 board[row][j] = '.';
             }
 
@@ -52,3 +59,18 @@ public:
         return ans;
     }
 };
+
+
+int main(){
+    Solution s;
+    int n = 4;
+    vector<vector<string>> ans = s.solveNQueens(n);
+
+    for(vector<string> vec : ans){
+        for(string st : vec){
+            cout << st << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}

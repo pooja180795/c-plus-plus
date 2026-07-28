@@ -13,7 +13,7 @@ using namespace std;
 
 class Solution {
 public:
-    bool isSafe(vector<string>& board, int row, int col, int n){        // O(n)
+    bool isSafe(vector<string>& board, int row, int col, int n){        
         // verticle check
         for(int r = 0; r < row; r++){               //O(n)
             if(board[r][col] == 'Q'){
@@ -21,13 +21,13 @@ public:
             }
         }
         //upper left diagonal
-        for(int r = row-1, c = col-1; r >= 0 && c >= 0; r--, c--){          // O(n)
+        for(int r = row-1, c = col-1; r >= 0 && c >= 0; r--, c--){          
             if(board[r][c] == 'Q'){
                 return false;
             }
         }
         //upper right diagonal
-        for(int r = row-1, c = col+1; r >= 0 && c < n; r--, c++){           //O(n)
+        for(int r = row-1, c = col+1; r >= 0 && c < n; r--, c++){           
             if(board[r][c] == 'Q'){
                 return false;
             }
@@ -41,7 +41,7 @@ public:
             return;
 
         }
-        for(int j = 0; j < n; j++){                     // O(n^2)
+        for(int j = 0; j < n; j++){                     
             if(isSafe(board, row, j, n)){
                 board[row][j] = 'Q';
                 placeInRow(board, row+1, n, ans);
@@ -51,7 +51,7 @@ public:
         }
     }
 
-    vector<vector<string>> solveNQueens(int n) {        // O(n^2 + n)
+    vector<vector<string>> solveNQueens(int n) {        // O(n!)
         vector<string> board(n, string(n,'.'));
         vector<vector<string>> ans;
         

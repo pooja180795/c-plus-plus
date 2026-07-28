@@ -18,7 +18,7 @@ public:
         int sr = (row/3)*3;
         int sc = (col/3)*3;
         for(int i = sr; i <= sr+2; i++){
-            for(int j = sc; j <= sc+2; sc++){
+            for(int j = sc; j <= sc+2; j++){
                 if(board[i][j] == dig){
                     return false;
                 }
@@ -66,9 +66,17 @@ int main(){
     {'.','6','.','.','.','.','2','8','.'},
     {'.','.','.','4','1','9','.','.','5'},
     {'.','.','.','.','8','.','.','7','9'}};
+    for(vector<char> vec : board){
+        for(char ch : vec){
+            cout << ch << " | ";
+        }
+        cout << endl;
+    }
+
+    cout << "==============================================" << endl;
 
     Solution s;
-   // s.solveSudoku(board);
+    s.solveSudoku(board);
 
     for(vector<char> vec : board){
         for(char ch : vec){

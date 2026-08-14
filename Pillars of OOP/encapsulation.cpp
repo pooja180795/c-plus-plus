@@ -1,5 +1,5 @@
 /* Encapsualation:
-It's a practice of bundling variables and methods in a single unit(called class),
+It's a practice of bundling variables and methods/member functions in a single unit(called class),
 while restricting direct access to the internal state from outside. */
 
 #include <iostream>

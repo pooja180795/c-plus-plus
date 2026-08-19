@@ -1,5 +1,9 @@
 /* Inheritance is a mechanism where one class (child/subclass) acquires the properties and 
-behaviors of another class (parent/superclass). */
+behaviors of another class (parent/superclass). 
+-> used for code reusability
+-> when we create child class object, first parent class constructor will be called then child class constructor will be called
+-> And for destructor first child class then parent class
+*/
 
 #include <iostream>
 using namespace std;
@@ -23,6 +27,9 @@ public:
     void stop(){
         cout << "vehicle is stopped" << endl;
     }
+    ~Vehicle(){
+        cout << "I'm a parent class (Vehicle) destructor" << endl;
+    }
 };
 
 class Car : public Vehicle{
@@ -45,6 +52,9 @@ class Car : public Vehicle{
         void openTrunk(){
             cout << "car trunk is open" << endl;
         }
+        ~Car(){
+            cout << "I'm a child class (Car) destructor" << endl;
+        }
 };
 
 class Bike : public Vehicle{
@@ -62,6 +72,9 @@ class Bike : public Vehicle{
 
         void wheelie(){
             cout << "bike is wheeling..." << endl;
+        }
+        ~Bike(){
+            cout << "I'm a child class (Bike) destructor" << endl;
         }
 };
 

@@ -1,3 +1,8 @@
+/*
+Polymorphism is the ability of an objects to take different forms or behave in certain ways depending on the context in
+which they are used.
+*/
+
 #include <iostream>
 using namespace std;
 

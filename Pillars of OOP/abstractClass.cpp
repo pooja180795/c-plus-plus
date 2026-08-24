@@ -1,3 +1,11 @@
+/*
+Abstaction:
+->  showing only important parts and hiding all unnecessary details
+->  Abstract class are used to provide base class from which other classes can be derived
+->  They cann't be instantiated and are meant to be inherited
+->  it define an interface for derived classes
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -49,5 +57,6 @@ int main(){
         s[i]->draw();
         cout << "araa = " << s[i]->area() << endl;
     }
+
     return 0;
 }

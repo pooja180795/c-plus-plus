@@ -27,7 +27,7 @@ using namespace std;
 class Solution {
 
 public:
-    int findFirst(vector<int>& nums, int st, int end, int tar){
+    int findFirst(vector<int>& nums, int st, int end, int tar){     //tc=log(n)
         int ans = -1;
         while(st<= end){
             int mid = st + (end-st)/2;
@@ -45,7 +45,7 @@ public:
         return ans;
     }
 
-    int findLast(vector<int>& nums, int st, int end, int tar){
+    int findLast(vector<int>& nums, int st, int end, int tar){      //tc=log(n)
         int ans = -1;
         while(st<= end){
             int mid = st + (end-st)/2;
@@ -62,7 +62,7 @@ public:
         }
         return ans;
     }
-    vector<int> searchRange(vector<int>& nums, int target) {
+    vector<int> searchRange(vector<int>& nums, int target) {   //tc=log(n)
         int st = 0;
         int end = nums.size()-1;
         int first = findFirst(nums, st, end, target);

@@ -39,15 +39,15 @@ public:
         if(board[row][col]  != '.'){
             return fillRow(board, nextR, nextC);
         }
-            for(char dig = '1'; dig <= '9'; dig++){
-                if(isSafe(board, row, col, dig)){
-                    board[row][col] = dig;
-                    if(fillRow(board, nextR, nextC)){
-                        return true;
-                    }
-                    board[row][col] = '.';
+        for(char dig = '1'; dig <= '9'; dig++){
+            if(isSafe(board, row, col, dig)){
+                board[row][col] = dig;  
+                if(fillRow(board, nextR, nextC)){
+                    return true;
                 }
+                board[row][col] = '.';
             }
+        }
         
         return false;
     }
